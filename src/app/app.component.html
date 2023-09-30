@@ -1,0 +1,44 @@
+<form [formGroup]="form">
+  <div>
+    <label>Username</label>
+    <input type="text" class="form-container" formControlName="name">
+    <div *ngIf="form.controls['name'].touched && form.controls['name'].invalid">
+
+      <small *ngIf="form.controls['name'].errors&& 
+      form.controls['name'].errors['required']">Name is Required</small>
+
+      <small *ngIf="form.controls['name'].errors&& 
+      form.controls['name'].errors['minlength']">Name should have atleast 4 charcters</small>
+
+      <small *ngIf="form.controls['name'].errors&& 
+      form.controls['name'].errors['maxlength']">Name should not exceed 8 charcterss</small>
+    </div>
+  </div>
+
+  <div>
+    <label>Phone</label>
+    <input type="text" class="form-container" formControlName="phone">
+
+    <div *ngIf="form.controls['phone'].touched &&  form.controls['phone'].invalid">
+      
+      <small *ngIf="form.controls['phone'].errors && 
+      form.controls['phone'].errors['required']">Phone is Required</small>
+
+      <small *ngIf="form.controls['phone'].errors && 
+      form.controls['phone'].errors['pattern']">Password shouls starts with 7,8,9 and must 10 digits</small>
+    </div>
+  </div>
+
+  <div>
+    <label>Email</label>
+    <input type="text" class="form-container" formControlName="email">
+    <div *ngIf="form.controls['email'].touched && form.controls['email'].invalid">
+
+      <small *ngIf="form.controls['email'].errors && 
+      form.controls['email'].errors['required']" class="text-danger">Enter the Email</small>
+
+      <small *ngIf="form.controls['email'].errors && form.controls['email'].errors['pattern']">Match the Pattern</small>
+    </div>
+  </div>
+  <button (click)="signup()">Sumbmit</button>
+</form>
